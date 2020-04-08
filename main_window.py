@@ -24,7 +24,7 @@ qmut_1=QMutex()
 qmut_2=QMutex()
 qmut_3=QMutex()
 class EmittingStream(QtCore.QObject):
-    textWritten = QtCore.pyqtSignal(str)
+    textWritten = QtCore.pyqtSignal(str)  # 如果使用自定义信号，一定要记得信号是类变量，必须在类中定义，不能在实例方法中定义，否则后面发射信号和连接槽方法时都会报错。
 
     def write(self, text):
         self.textWritten.emit(str(text))
